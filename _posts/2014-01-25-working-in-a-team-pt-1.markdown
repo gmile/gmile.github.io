@@ -74,4 +74,4 @@ I take the importance of keeping the history of communication to its extreme. Ve
 
 Ideally, all the communication within the team takes place within Campfire, Pivotal Tracker and a git log (pick similar tools of choice).
 
-In my next post I'll take a deeper look at how git log, being one of the best tools to communicate, serves to keeping things on the record.
+The next part will focus on how git log, being one of the best tools to communicate, serves to keeping things on the record.
