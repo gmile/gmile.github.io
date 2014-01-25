@@ -26,7 +26,7 @@ A few times in my life I've been in a situation, where I thought I absolutely kn
 This usually had three costs:
 
 * client had to pay (like in spend real money) for my mistake,
-* the team had to pay the cost of my mistake by turning into a crunch more,
+* the team had to pay the cost of my mistake by turning into a crunch mode,
 * most importantly, I had to pay my own mental cost by stressing out, which is never a healthy thing.
 
 It's too easy to dig yourself a hole you won't be able get out from. I realised that I no longer wanted to pay the costs of stressing out. Stress was something I absolutely couldn't afford, since recovering for me was always long and painful.
