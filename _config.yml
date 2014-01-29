@@ -1,3 +1,4 @@
 name: Walking a dog
 markdown: redcarpet
+permalink: pretty
 pygments: true
