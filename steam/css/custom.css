@@ -1,0 +1,57 @@
+#top-details {
+  margin: 100px auto;
+}
+
+h1 { color: #FFF }
+
+body {
+  background-color: #000
+}
+
+body:after {
+  content: "";
+  background: url(http://www.daedalic.de/images/layout/backgrounds/blackguards_header_rahmen.jpg) no-repeat center top;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1; 
+}
+
+#buy-background {
+  padding: 10px;
+}
+
+.additional {
+  margin-top: 10px;
+}
+
+.additional .btn {
+  color: #FFF;
+  background-color: transparent;
+  border-color: #369
+}
+
+#description {
+  width: 500px;
+  margin: auto;
+  color: #CCC
+}
+
+#screenshots {
+  display: none
+}
+
+#screenshots .row {
+  margin-top: 25px
+}
+
+#screenshots .row:first-child {
+  margin-top: 0
+}
+
+hr {
+  border-color: #333
+}

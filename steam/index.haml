@@ -1,16 +1,74 @@
 ---
 description: Having fun redesigning Steam store page
 ---
-
+!!!
 %html
   %head
     %title Blackguards
     %link{ href: 'css/bootstrap.min.css', rel: 'stylesheet', type: 'text/css' }
+    %link{ href: 'css/custom.css',        rel: 'stylesheet', type: 'text/css' }
   %body
-    %h1 Blackguards
+    .container
+      %div#top-details.text-center
+        %h1 Blackguards
+        %h4
+          %a{ href: '#', title: 'Developer' } Daedalic Entertainment
+          \/
+          %a{ href: '#', title: 'Publisher' } Daedalic Entertainment
 
-    %div{ id: 'description' }
-      What happens when the only hope of a threatened world lies not with heroes in shining armor, but in the hands of a band of misfits and criminals? Blackguards, a new turn-based strategy RPG, explores this very question. You will discover over 180 unique hex-based battlegrounds within a dark and mature story of crime, drugs, and murder.
-    
-    %div{ id: 'video' }
-      %iframe{ width: '560', height: '315', src: '//www.youtube.com/embed/4ry7oPVH8eA', frameborder: '0', allowfullscreen: '' }
+      %div#buy-background.text-center
+        %a{ href: '#', class: 'btn btn-lg btn-success' } Buy Blackguards
+        .additional
+          %a{ id: 'watch-trailer', href: '#', class: 'btn btn-standard' }
+            <span class="glyphicon glyphicon-film"></span> Watch trailer
+          %a{ id: 'see-screenshots', href: '#', class: 'btn' }
+            <span class="glyphicon glyphicon-picture"></span> See screenshots
+            
+
+      #description.text-center
+        What happens when the only hope of a threatened world lies not with heroes in shining armor, but in the hands of a band of misfits and criminals? Blackguards, a new turn-based strategy RPG, explores this very question. You will discover over 180 unique hex-based battlegrounds within a dark and mature story of crime, drugs, and murder.
+
+      %hr
+
+      #screenshots
+        .row
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_0c3bb97eaf68becf82268c02e6870076d3a7120f.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_8a3e369646a27dd1be65f4df557488c36a570cbe.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_7701e79896c9c4b8f2217b988b327d6817bbbd6e.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_73dbb019d70ae9ff5eb865a49d49b243e81d8b49.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_bcbc7323f7ff7af3659cd3469cef72660dd767ee.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_b9e4c4ee66e4bf4756846668faedff4d3f8db78e.116x65.jpg?t=1390578739'>
+
+        .row
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_40d767b4ac7ed4bb02d6260a05f8e141ecfe5c32.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_951a3ef5085b39187cd51c9aa2cec858bca9b523.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_9a838b847e0b99ac7dc03805afa9c7743531bb43.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_055404d8ead93a6be3474de71d214e16740eb72d.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_da91e5670fb85e9c342543255299277b97332499.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_fb4f080c6bff1633cc961cf49d4eba4318c0d24c.116x65.jpg?t=1390578739'>
+
+        .row
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_9761a250c5c7a053048e9ff8003b7baf7821ec55.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_40b2e5302fed251b752a2888f0b1893f318c1946.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_c3d413ca9f956423448ef9ad85e5dfd482a2e624.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_b6e638c779f37a4581af36f671e39fc041b89a0f.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_83bdb3db9a8e8320ab4d1b203da53d3e165f9463.116x65.jpg?t=1390578739'>
+          .col-md-2
+            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_773cfb58d60627b6c8972f208ff04dada1b83342.116x65.jpg?t=1390578739'>
