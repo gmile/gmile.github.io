@@ -1,11 +1,12 @@
 #top-details {
-  margin: 100px auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 h1 { color: #FFF }
 
 body {
-  background-color: #000
+  background-color: #000;
 }
 
 body:after {
@@ -24,24 +25,21 @@ body:after {
   padding: 10px;
 }
 
-.additional {
-  margin-top: 10px;
-}
-
 .additional .btn {
   color: #FFF;
   background-color: transparent;
   border-color: #369
 }
 
-#description {
-  width: 500px;
-  margin: auto;
-  color: #CCC
+.additional .btn:hover{
+  color: #FFF;
+  background-color: #369;
+  border-color: #369
 }
 
-#screenshots {
-  display: none
+#description {
+  width: 500px;
+  color: #999
 }
 
 #screenshots .row {
@@ -53,5 +51,21 @@ body:after {
 }
 
 hr {
-  border-color: #333
+  border-color: #222
+}
+
+#reviews h3 {
+  font-size: 42px;
+  color: #369
+}
+
+#reviews blockquote {
+  color: #999;
+  border-left: 0
+}
+
+#game-details h4, #system-requirements h4,
+#game-details p, #system-requirements p,
+#game-details ul, #system-requirements ul {
+  color: #999
 }
