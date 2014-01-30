@@ -9,20 +9,17 @@ description: Having fun redesigning Steam store page
     %link{ href: 'css/custom.css',        rel: 'stylesheet', type: 'text/css' }
   %body
     .container
-      #top-details.text-center.center-block
+      #top-details.row.text-center.center-block
         %h1 Blackguards
         %h4
           %a{ href: '#', title: 'Developer' } Daedalic Entertainment
           \/
           %a{ href: '#', title: 'Publisher' } Daedalic Entertainment
-        %h5.center-block{ style: 'width: 500px' } Blackguards is a mix of indie, RPG and strategy, developed by Blizzard studios released by D22 of January, 2014
-
-      #buy-background.text-center
         %p
-          %a{ href: '#', class: 'btn btn-lg btn-success' } Buy Blackguards
+          %a#buy{ href: '#', class: 'btn btn-lg btn-success' } Buy Blackguards
         %p.additional
           %a{ id: 'watch-trailer', href: '#', class: 'btn btn-standard' }
-            %span.glyphicon.glyphicon-film
+            %span.glyphicon.glyphicon-play
             Watch trailer
           %a{ id: 'see-screenshots', href: '#', class: 'btn' }
             %span.glyphicon.glyphicon-screenshot
@@ -30,10 +27,16 @@ description: Having fun redesigning Steam store page
           %a{ id: 'see-screenshots', href: '#', class: 'btn' }
             %span.glyphicon.glyphicon-save
             Download demo
-
-      #description.text-center.center-block
-        What happens when the only hope of a threatened world lies not with heroes in shining armor, but in the hands of a band of misfits and criminals? Blackguards, a new turn-based strategy RPG, explores this very question. You will discover over 180 unique hex-based battlegrounds within a dark and mature story of crime, drugs, and murder.
-
+        %p.additional
+          %a{ id: 'watch-trailer', href: '#', class: 'btn btn-standard btn-xs' }
+            %span.glyphicon.glyphicon-globe
+            News
+          %a{ id: 'see-screenshots', href: '#', class: 'btn btn-standard btn-xs' }
+            %span.glyphicon.glyphicon-flash
+            Updates
+          %a{ id: 'see-screenshots', href: '#', class: 'btn btn-standard btn-xs' }
+            %span.glyphicon.glyphicon-comment
+            Community
       %hr
 
       #reviews.row.text-center
@@ -63,7 +66,11 @@ description: Having fun redesigning Steam store page
       .row
         #game-details.col-md-6
           %h2.text-center Game details
+          %p What happens when the only hope of a threatened world lies not with heroes in shining armor, but in the hands of a band of misfits and criminals? Blackguards, a new turn-based strategy RPG, explores this very question. You will discover over 180 unique hex-based battlegrounds within a dark and mature story of crime, drugs, and murder.
           %p Play as a warrior, mage or hunter and customize your character's skills as you see fit. The challenging campaign delivers a story of doubt, treason and loss. You decide the course of the story at key turning points and determine its outcome.
+
+        #key-features.col-md-6
+          %h2.text-center Key features
           %ul.key-features
             %li More than 180 unique battlemaps provide ever-evolving and novel challenges.
             %li Make sure you have plenty of snacks, as this dark fantasy adventure has 40+ hours of exciting play time.
@@ -73,85 +80,53 @@ description: Having fun redesigning Steam store page
             %li Use interactive objects like bee hives or barrels to your advantage in combat, or blow yourself up by carrying a torch into flammable swamp gas.
             %li Dish out some serious damage with 40 special abilities and more than 90 spells... or find yourself on the other end and get obliterated.
 
+      .row
         #system-requirements.col-md-6
           %h2.text-center System requirements
-          .col-md-6
-            %h4.text-center Minimum:
-            %ul
-              %li OS: Windows XP 32 Bit
-              %li Processor: 2 GHz Dual Core
-              %li Memory: 4 GB RAM
-              %li Graphics: nVidia GeForce 8600 GT, ATI Radeon HD 2600 XT
-              %li DirectX: Version 9.0c
-              %li Hard Drive: 20 GB available space
-              %li Sound Card: DirectX 9.0c Compatible Sound Card with Latest Drivers
-          .col-md-6
-            %h4.text-center Recommended:
-            %ul
-              %li OS: Windows Vista SP2, Windows 7 SP1, Windows 8 (32/64 bits versions)
-              %li Processor: 2.4 GHz Quad Core CPU
-              %li Memory: 4 GB RAM
-              %li Graphics: NVIDIA GeForce GTX 275, ATI Radeon 4770 Series or higher
-              %li DirectX: Version 9.0c
-              %li Hard Drive: 20 GB available space
-              %li Sound Card: DirectX 9.0c Compatible Sound Card with Latest Drivers
+          %table.table.table-condensed
+            %thead
+              %tr
+                %th
+                %th Minimum
+                %th Recommended
+            %tbody
+              %tr
+                %td OS
+                %td Windows XP 32 Bit
+                %td Windows Vista SP2, Windows 7 SP1, Windows 8 (32/64 bits versions)
+              %tr
+                %td Processor
+                %td 2 GHz Dual Core
+                %td 2.4 GHz Quad Core CPU
+              %tr
+                %td Memory
+                %td.text-center{ colspan: 2 } 4GB RAM
+              %tr
+                %td Graphics
+                %td <nobr>nVidia GeForce 8600 GT</nobr>, <nobr>ATI Radeon HD 2600 XT</nobr>
+                %td <nobr>NVIDIA GeForce GTX 275</nobr>, <nobr>ATI Radeon 4770 Series<nobr> or higher
+              %tr
+                %td DirectX
+                %td.text-center{ colspan: 2 } Version 9.0c
+              %tr
+                %td <nobr>Hard Drive</nobr>
+                %td.text-center{ colspan: 2 } 20 GB available space
+              %tr
+                %td <nobr>Sound Card</nobr>
+                %td.text-center{ colspan: 2 } DirectX 9.0c Compatible Sound Card with latest drivers
 
-      .row
-        .col-md-4
-          %h4.text-center Steam features
-        .col-md-4
-          %h4.text-center Achievements
-        .col-md-4
-          %h4.text-center Supported languages
+        #system-requirements.col-md-3
+          %h2.text-center Steam features
           %ul
-            %li English
-            %li German
-            %li French
-            %li Spanish
-            %li Polish
-            %li Portuguese-Brazil
-            %li Russian
-            %li Italian
+            %li Single-player
+            %li Steam Achievements
+            %li Steam Cloud
+            %li Steam Trading Cards
+        #system-requirements.col-md-3
+          %h2.text-center Achievements
 
-      #screenshots.hidden
-        .row
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_0c3bb97eaf68becf82268c02e6870076d3a7120f.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_8a3e369646a27dd1be65f4df557488c36a570cbe.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_7701e79896c9c4b8f2217b988b327d6817bbbd6e.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_73dbb019d70ae9ff5eb865a49d49b243e81d8b49.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_bcbc7323f7ff7af3659cd3469cef72660dd767ee.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_b9e4c4ee66e4bf4756846668faedff4d3f8db78e.116x65.jpg?t=1390578739'>
-
-        .row
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_40d767b4ac7ed4bb02d6260a05f8e141ecfe5c32.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_951a3ef5085b39187cd51c9aa2cec858bca9b523.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_9a838b847e0b99ac7dc03805afa9c7743531bb43.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_055404d8ead93a6be3474de71d214e16740eb72d.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_da91e5670fb85e9c342543255299277b97332499.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_fb4f080c6bff1633cc961cf49d4eba4318c0d24c.116x65.jpg?t=1390578739'>
-
-        .row
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_9761a250c5c7a053048e9ff8003b7baf7821ec55.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_40b2e5302fed251b752a2888f0b1893f318c1946.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_c3d413ca9f956423448ef9ad85e5dfd482a2e624.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_b6e638c779f37a4581af36f671e39fc041b89a0f.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_83bdb3db9a8e8320ab4d1b203da53d3e165f9463.116x65.jpg?t=1390578739'>
-          .col-md-2
-            <img src='http://cdn2.steampowered.com/v/gfx/apps/249650/ss_773cfb58d60627b6c8972f208ff04dada1b83342.116x65.jpg?t=1390578739'>
+      #copyrights.row.text-center{ style: 'padding: 50px 0' }
+        .col-md-6.col-md-offset-3
+          %p{ style: 'font-size: 10px; color: #666' }
+            © 2014 Daedalic Entertainment GmbH.
+            The Dark Eye is published under license of Chromatrix GmbH. The Dark Eye is a registered trademark of Significant Fantasy Medienrechte GbR. Blackguards, the Blackguards logo and the Daedalic logo are trademarks of Daedalic Entertainment GmbH. All rights reserved.
