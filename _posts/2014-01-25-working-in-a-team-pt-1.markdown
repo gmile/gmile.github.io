@@ -6,7 +6,7 @@ categories: development
 ---
 ### Feedback from other developers
 
-For a long time in the past, I've been taking the majority of comments regarding my code from my colleagues too personally. It took me a really long time to recognize the main thing in it – [I am not the code I write](http://sstephenson.us/posts/you-are-not-your-code), i.e. the comments I receive are about my code, and not about my personality.
+For a long time in the past, I've been taking the majority of comments regarding my code from my colleagues too personally. It took me a really long time to recognize the main thing in it – [you are not the code I write](http://sstephenson.us/posts/you-are-not-your-code), i.e. the comments I receive are about my code, and not about my personality.
 
 For me, it was crucially important to take a different view on criticizing: **instead of criticizing a person, one must criticise he's deeds**. Though, the rule may be alleviated by a quote from Napoleon:
 
