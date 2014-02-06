@@ -68,7 +68,7 @@ As a bonus track, I highly recommend reading on why only [fools write code first
 
 ### Stay on the record
 
-A few months after the feature had been released and feedback was gathered, it is very likely that the feature will have to be changed. At this point there's absolutely no guarantee the task to perform the change will be assigned to the same person. But even if so – one may have already forgotten why in the world he has made certain decisions when implementing it.
+A few months after the feature had been released and feedback was gathered, it is very likely that the feature will have to be changed. At this point there's absolutely no guarantee the task to perform the change will be assigned to the same person. But even if so – one may have already forgotten why in the world he has made certain decisions when implementing it. There must be a way to "archive" the process of working on the feature, right?
 
 I take the importance of keeping the history of communication to its extreme. Very often in my life certain, very confusing parts of the code were quickly clarified by just searching the Campfire history.
 
