@@ -4,7 +4,7 @@ title:  Deploying migrations during backup
 date:   2014-01-25 12:57:00
 categories: development
 ---
-I've ran into this probalem the other day – after running `cap production deploy:migrations` the `cap` output had stuck on running the migrations step. Before calling Chip and Dale, I descided to take a closer look at what was going on.
+I've ran into this problem the other day – after running `cap production deploy:migrations` the `cap` output had stuck on running the migrations step. Before calling Chip and Dale, I decided to take a closer look at what was going on.
 
 ###  The problem
 
@@ -40,9 +40,8 @@ Apparently there were two ways out.
 
 This would be much more preferable way of resolving the issue, yet not for me. In my case a regular backup is 20Gb (8Gb compressed), and, what was even more depressing the backup process was at it's very early stage. In order to approximately find out current progress of a backup, one may go with two options:
 
-1. if you already know the approx. timeframe the backup generation finishes at, calculate current running time by subtrackting current servers time from the time the backup starts (inspect `crontab -l` for that)
+1. if you already know the approx. timeframe the backup generation finishes within, calculate current running time by subtracting current servers time from the time the backup starts (inspect `crontab -l` for that)
 2. if you don't know the approx. time, but you have your server under a New Relic (or similar service) provisioning, you can get to know that (as well as approx. current progress) by looking at the server load during backup from the previous days. Here's how it looked for me: <image>
-
 
 #### 2. Kill the backup process
 
