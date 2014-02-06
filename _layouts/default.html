@@ -4,9 +4,15 @@
     {% include head.html %}
   </head>
   <body>
-    {% include header.html %}
-    {{ content }}
-    {% include footer.html %}
-    {% include analytics.html %}
+    <div class="container">
+      {% include header.html %}
+      <div class="row">
+        <div class="col-md-9">
+          {{ content }}
+        </div>
+      </div>
+      {% include footer.html %}
+      {% include analytics.html %}
+    </div>
   </body>
 </html>
