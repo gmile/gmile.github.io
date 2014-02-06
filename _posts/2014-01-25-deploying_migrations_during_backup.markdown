@@ -4,9 +4,6 @@ title:  Deploying migrations during backup
 date:   2014-01-25 12:57:00
 categories: development
 ---
-
-## Deploying migrations during backup
-
 I've ran into this probalem the other day – after running `cap production deploy:migrations` the `cap` output had stuck on running the migrations step. Before calling Chip and Dale, I descided to take a closer look at what was going on.
 
 ###  The problem

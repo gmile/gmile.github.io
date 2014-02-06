@@ -4,9 +4,6 @@ title:  Working in a team. Part 1
 date:   2014-01-25 00:46:00
 categories: development
 ---
-
-## Working in a team. Part 1
-
 ### Feedback from other developers
 
 For a long time in the past, I've been taking the majority of comments regarding my code from my colleagues too personally. It took me a really long time to recognize the main thing in it – [I am not the code I write](http://sstephenson.us/posts/you-are-not-your-code), i.e. the comments I receive are about my code, and not about my personality.
