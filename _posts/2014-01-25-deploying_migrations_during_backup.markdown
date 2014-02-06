@@ -34,53 +34,60 @@ First off, why `... TO STDOUT;`? In fact, the `... TO STDOUT;` is a good hint it
 0 15 * * * pg_dump my_production_database | gzip /home/my_project/my_production_database_backup.sql.gz
 ```
 
-Apparently there were two ways out:
+Apparently there were two ways out.
 
-1. **Wait until backup finishes**. This would be much more preferable way of resolving the issue, yet not for me. In my case a regular backup is 20Gb (8Gb compressed), and, what was even more depressing the backup process was at it's very early stage. In order to approximately find out current progress of a backup, one may go with two options:
-  1. if you already know the approx. timeframe the backup generation finishes at, calculate current running time by subtrackting current servers time from the time the backup starts (inspect `crontab -l` for that)
-  2. if you don't know the approx. time, but you have your server under a New Relic (or similar service) provisioning, you can get to know that (as well as approx. current progress) by looking at the server load during backup from the previous days. Here's how it looked for me: <image>
-2. **Kill the backup process**. In my case, the backup finished in approx. 5 hours, and it was running for only an hour by the time I was investigating the problem. So here's what I did:
+#### 1. Wait until backup finishes
 
-  1. kill the backup process (it will make the `cap` command finish with failure, but that's ok):
+This would be much more preferable way of resolving the issue, yet not for me. In my case a regular backup is 20Gb (8Gb compressed), and, what was even more depressing the backup process was at it's very early stage. In order to approximately find out current progress of a backup, one may go with two options:
+
+1. if you already know the approx. timeframe the backup generation finishes at, calculate current running time by subtrackting current servers time from the time the backup starts (inspect `crontab -l` for that)
+2. if you don't know the approx. time, but you have your server under a New Relic (or similar service) provisioning, you can get to know that (as well as approx. current progress) by looking at the server load during backup from the previous days. Here's how it looked for me: <image>
+
+
+#### 2. Kill the backup process
+
+In my case, the backup finished in approx. 5 hours, and it was running for only an hour by the time I was investigating the problem. So here's what I did:
+
+1. kill the backup process (it will make the `cap` command finish with failure, but that's ok):
       
-      ```bash
+  ```bash
 $ sudo kill -9 12345       
-      ```
+  ```
 
-  2. go to the folder, where capistrano keeps all the project releases. For me it was:
+2. go to the folder, where capistrano keeps all the project releases. For me it was:
 
-      ```bash
+  ```bash
 cd /var/projects/my_project/releases/
-      ```
+  ```
 
-  3. refresh the symlink (this is usually done by capistrano itself, yet now we have to do it manually, since cap command finished with a failure):
+3. refresh the symlink (this is usually done by capistrano itself, yet now we have to do it manually, since cap command finished with a failure):
 
-      ```bash
-      ln -s /var/projects/my_project/releases/20130613155542/ current
-      ```
+  ```bash
+ln -s /var/projects/my_project/releases/20130613155542/ current
+  ```
 
-  4. move inside the `current` directory:
+4. move inside the `current` directory:
 
-      ```bash
-      cd /var/projects/my_project/releases/current
-      ```
+  ```bash
+cd /var/projects/my_project/releases/current
+  ```
 
-  5. check the status of migrations, that ran so far (optional):
+5. check the status of migrations, that ran so far (optional):
 
-      ```bash
-      RAILS_ENV=production rake db:migrate:status
-      ```
+  ```bash
+RAILS_ENV=production rake db:migrate:status
+  ```
 
-  6. run the migrations:
+6. run the migrations:
 
-      ```bash
-      RAILS_ENV=production rake db:migrate
-      ```
+  ```bash
+RAILS_ENV=production rake db:migrate
+  ```
 
-  7. restart the application:
+7. restart the application:
 
-      ```bash
-      touch tmp/restart
-      ```
+  ```bash
+touch tmp/restart
+  ```
 
 All done now! Of course, the rule of thumb should be: do not deploy while having DB backup in progress.
