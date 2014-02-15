@@ -4,6 +4,8 @@ title:  Communication in a team
 date:   2014-01-25 00:46:00
 categories: development
 ---
+Over the course of a few years in developement I've worked within a few dev teams. Here, I want to go over a few important things I've noticed while being a team member.
+
 ### Feedback from other developers
 
 For a long time in the past, I've been taking the majority of comments regarding my code from my colleagues too personally. It took me a really long time to recognize the main thing in it – [you are not the code you write](http://sstephenson.us/posts/you-are-not-your-code), i.e. the comments I receive are about my code, and not about my personality.
