@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Working in a team. Part 1. Communication
+title:  Communication in a team
 date:   2014-01-25 00:46:00
 categories: development
 ---
