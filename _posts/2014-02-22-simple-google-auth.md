@@ -9,7 +9,7 @@ Although it may not look so at a glance, authorizing access to a Google service 
 
 ## The legend
 
-A friend of mine owns a neat collection of playlists on YouTube. I want to create a tiny web app which, with a permission from him, would access those playlists and, maybe some data on his YouTube account.
+A friend of mine owns a neat collection of playlists on YouTube. I want to create a tiny web app which, with a permission from him, would access those playlists and, maybe some other data on his YouTube account.
 
 I am not going to walk through the process of making a complete web app here, but instead focus on the authorization part, including making a first API call.
 
