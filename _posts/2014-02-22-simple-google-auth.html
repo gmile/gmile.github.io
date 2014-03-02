@@ -1,0 +1,56 @@
+---
+layout: post
+title:  Communication in a team
+date:   2014-01-25 00:46:00
+categories: development
+---
+
+Authenticating to access Google services is simple. In this post I'd like to take a detailed look at what needs to be done.
+
+## The task
+
+My friend owns a few neat playlists on youtube. I want to create a tiny web app which would, with his permission, access those playlists on his youtube account.
+
+## Registering an app on Google Cloud 
+
+First, I need to register my app on Google Cloud. The [whole process](https://developers.google.com/accounts/docs/OAuth2#basicsteps) was already described really well, so I'm not going to go into detail here. Upon completing it, we will have 3 things:
+
+1. `CLIENT_ID`
+2. `CLIENT_SECRET`
+3. `REDIRECT_URL` (or a list of redirection urls)
+
+After [registering]() an app on Google, we will have three things:
+
+## Signet
+
+Google providers a great authentication gem, called [`signet`](https://github.com/google/signet).
+
+After [registering](https://developers.google.com/accounts/docs/OAuth2#basicsteps) an app on Google, we will have three things:
+
+```ruby
+auth = Signet::OAuth2::Client.new(
+  client_id:         '745900038950-jg3dvnp95642ss7crlbf42jh3n75ggii.apps.googleusercontent.com',
+  client_secret:     's0F0-heaAvyJ9nxyW8ShfJlD',
+  scope:             'https://www.googleapis.com/auth/analytics.readonly',
+  authorization_uri: 'https://accounts.google.com/o/oauth2/auth',
+  redirect_uri:      'http://localhost:3000'
+).authorization_uri
+
+auth.authorization_uri
+```
+
+All that's left is to receive a `REFRESH_TOKEN`. In order to get it, it is required to:
+
+
+```ruby
+auth = Signet::OAuth2::Client.new(
+  client_id:            'CLIENT_ID',
+  client_secret:        'CLIENT_SECRET',
+  token_credential_uri: 'https://accounts.google.com/o/oauth2/token',
+  scope:                'https://www.googleapis.com/auth/analytics.readonly',
+ 
+  refresh_token: '1/r56Ir6qkrtqTc2MWdg9Y7lRT20GvLen1tkoxOj_HXBo'
+)
+```
+ 
+api_client = SeoPlatform::GoogleAnalytics::APIClient.new(auth)
