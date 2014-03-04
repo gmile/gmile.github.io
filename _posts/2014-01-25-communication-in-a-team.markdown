@@ -2,6 +2,7 @@
 layout: post
 title:  Communication in a team
 date:   2014-01-25 00:46:00
+description: Lessons learned from working on teams of developers
 categories: development
 ---
 Over the course of a few years in developement I've worked within a few dev teams. Here, I want to go over a few important things I've noticed while being a team member.

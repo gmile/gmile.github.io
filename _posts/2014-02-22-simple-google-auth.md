@@ -2,6 +2,7 @@
 layout: post
 title:  OAuth2, Google and Ruby
 date:   2014-03-02 18:34:00
+description: Lesson learned from setting up an OAuth2 authorization to a Google API
 categories: development
 ---
 
