@@ -11,7 +11,7 @@ Over the course of a few years in developement I've worked within a few dev team
 
 For a long time in the past, I've been taking the majority of comments regarding my code from my colleagues too personally. It took me a really long time to recognize the main thing in it – [you are not the code you write](http://sstephenson.us/posts/you-are-not-your-code), i.e. the comments I receive are about my code, and not about my personality.
 
-For me, it was crucially important to take a different view on criticizing: **instead of criticizing a person, one must criticise he's deeds**. Though, the rule may be alleviated by the following quote:
+For me, it was crucially important to take a different view on criticizing: **instead of criticizing a person, one must criticise his deeds**. Though, the rule may be alleviated by the following quote:
 
 > Never criticize another man's deeds unless you know why he performed them. The chances are you would have done the same under the same circumstances.
 > <footer><cite title="Napoleon Hill">Napoleon Hill</cite></footer>
