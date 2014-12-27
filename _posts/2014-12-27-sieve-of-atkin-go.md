@@ -6,7 +6,7 @@ description: Trying out Go programming language
 categories: development
 ---
 
-Couple of months ago I was learning Go. Despite not being involved in learning it as of lately, I found it to be really refreshing after writing so long solely in Ruby. Below is an implementation of [Sieve of Atkin](http://en.wikipedia.org/wiki/Sieve_of_Atkin):
+Couple of months ago I was learning Go. Despite not being involved in learning it as of lately, back in a day I found it to be really refreshing after writing so long solely in Ruby. Below is an implementation of [Sieve of Atkin](http://en.wikipedia.org/wiki/Sieve_of_Atkin):
 
 ```go
 package main
