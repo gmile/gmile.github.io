@@ -14,7 +14,7 @@ Here's the steps I did to understand why my deploy stuck on attempt to run migra
 1. logged into server with production database,
 2. ran:
 
-  ```bash
+    ```bash
 $ psql my_production_database -c "SELECT datname,procpid,current_query FROM pg_stat_activity;"
 
             datname        | procpid |                        current_query                        
@@ -23,7 +23,7 @@ my_production_database |   10312 | <IDLE>
 my_production_database |   12345 | COPY select * from some_really_big_table ... TO STDOUT;
 my_production_database |   54321 | <line_from_one_of_my_rails_migrations>
 my_production_database |   14123 | SELECT datname,procpid,current_query FROM pg_stat_activity;
-  ```
+    ```
 
 4. there was something curious with `COPY select * from some_really_big_table ... TO STDOUT;` – why is it even being run during migrations? Clearly, this line had nothing to do with my migrations.
 
@@ -50,44 +50,44 @@ In my case, the backup finished in approx. 5 hours, and it was running for only 
 
 1. kill the backup process (it will make the `cap` command finish with failure, but that's ok):
       
-  ```bash
+    ```bash
 $ sudo kill -9 12345       
-  ```
+    ```
 
 2. go to the folder, where capistrano keeps all the project releases. For me it was:
 
-  ```bash
+    ```bash
 cd /var/projects/my_project/releases/
-  ```
+    ```
 
 3. refresh the symlink (this is usually done by capistrano itself, yet now we have to do it manually, since cap command finished with a failure):
 
-  ```bash
+    ```bash
 ln -s /var/projects/my_project/releases/20130613155542/ current
-  ```
+    ```
 
 4. move inside the `current` directory:
 
-  ```bash
+    ```bash
 cd /var/projects/my_project/releases/current
-  ```
+    ```
 
 5. check the status of migrations, that ran so far (optional):
 
-  ```bash
+    ```bash
 RAILS_ENV=production rake db:migrate:status
-  ```
+    ```
 
 6. run the migrations:
 
-  ```bash
+    ```bash
 RAILS_ENV=production rake db:migrate
-  ```
+    ```
 
 7. restart the application:
 
-  ```bash
+    ```bash
 touch tmp/restart
-  ```
+    ```
 
 All done now! Of course, the rule of thumb should be: do not deploy while having DB backup in progress.
