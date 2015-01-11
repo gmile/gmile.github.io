@@ -64,7 +64,7 @@ This should output a URI as such:
 https://accounts.google.com/o/oauth2/auth?access_type=offline&approval_prompt=force&client_id=110528770916-laeoqu8p515sp2l8nmrk6f8ks1vi6hue.apps.googleusercontent.com&redirect_uri=http://localhost&response_type=code&scope=https://www.googleapis.com/auth/analytics.readonly&state=useful_dynamic_string
 ```
 
-Before we proceed, let's take a look at what 'useful_dynamic_string' actually used for.
+Before we proceed, let's take a look at what `useful_dynamic_string` actually used for.
 
 For the moment, let's pretend that no `{ state: 'useful_dynamic_string' }` parameter is being passed to `Signet::OAuth2::Client` object constructor. I am as a developer, is the only user of the application, therefore using a simple `http://localhost/?code=...` URI absolutely satisfies my needs. In a real-world application though, there's a need to distinguish a user who lands on such URL. Here's where the `state` parameter comes in handy.
 
