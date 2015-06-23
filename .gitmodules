@@ -1,0 +1,3 @@
+[submodule "lottery"]
+	path = lottery
+	url = git@github.com:gmile/lottery.git
