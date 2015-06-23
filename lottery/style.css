@@ -1,0 +1,13 @@
+#my_table {
+  margin-top: 2em
+}
+
+#my_table .my_row {
+  font-family: monospace
+}
+
+#my_stats td + td,
+#my_stats td + td + td
+{
+  font-family: monospace
+}
