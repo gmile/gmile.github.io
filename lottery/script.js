@@ -3,12 +3,6 @@ numeral.language('ua', {
     thousands: ',',
     decimal: ','
   },
-  abbreviations: {
-    thousand: 'k',
-    million: 'm',
-    billion: 'b',
-    trillion: 't'
-  },
   currency: {
     symbol: '₴'
   }
@@ -69,13 +63,15 @@ var game = {
 
   _generateNewDay: function() {
     var new_players        = this._generateMorePlayers(),
-        new_tickets_issued = this._generateMoreTickets(new_players, this.total_players),
+        old_players        = this._takeSomeOldPlayers(),
+        new_tickets_issued = new_players + old_players,
         new_winners        = Math.floor(new_tickets_issued / this._currentStage()['each']);
 
     this.current_stage = this._recalculateCurrentStage();
 
     return {
       new_day:            this.total_days + 1,
+      old_players:        old_players,
       new_players:        new_players,
       new_winners:        new_winners,
       new_income:         new_tickets_issued * 20,
@@ -113,14 +109,32 @@ var game = {
     document.getElementById('new_tickets_issued').innerHTML = numeral(new_day.new_tickets_issued).format('+0,0');
     document.getElementById('new_income').innerHTML         = numeral(new_day.new_income).format('+0,0$');
     document.getElementById('new_payed').innerHTML          = numeral(new_day.new_payed).format('+0,0$');
+
+    var income_formula = '(' + numeral(new_day.new_players).format('0,0')
+                             + ' + '
+                             + numeral(new_day.old_players).format('0,0')
+                             + ') × '
+                             + numeral(20).format('0,0$');
+
+    var tickets_issued_folmula = numeral(new_day.new_players).format('0,0')
+                                 + ' + '
+                                 + numeral(new_day.old_players).format('0,0');
+
+    var payed_formula          = numeral(new_day.new_winners).format('0,0')
+                                 + ' × '
+                                 + numeral(this._currentStage()['win_amount']).format('0,0$');
+
+    document.getElementById('new_tickets_issued_formula').innerHTML = ' = ' + tickets_issued_folmula;
+    document.getElementById('new_income_formula').innerHTML         = ' = ' + income_formula;
+    document.getElementById('new_payed_formula').innerHTML          = ' = ' + payed_formula;
   },
 
   _generateMorePlayers: function() {
     return Math.floor((Math.random() * 5000) + 1);
   },
 
-  _generateMoreTickets: function(new_players, old_players) {
-    return new_players + Math.floor(0.1 * old_players);
+  _takeSomeOldPlayers: function() {
+    return Math.floor(0.1 * this.total_players);
   }
 };
 

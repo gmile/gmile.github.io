@@ -27,7 +27,7 @@
       </table>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-8">
           <div class="btn-group">
             <button type="button" id="start" class="btn btn-primary">Старт</button>
             <button type="button" id="pause" class="btn btn-default">Пауза</button>
@@ -37,47 +37,53 @@
 
           <table id="my_stats" class="table table-condensed" style="margin-top: 1em">
             <tr>
-              <th></td>
-              <th class="text-right">Всего:</td>
-              <th class="text-right">Новый день:</td>
+              <th></th>
+              <th class="text-right">Всего:</th>
+              <th class="text-right">Новый день:</th>
+              <th width=150px></th>
             </tr>
 
             <tr>
               <td>День:</td>
               <td class="text-right" id="total_days">0</td>
               <td class="text-right" id="new_day">0</td>
+              <td></td>
             </tr>
 
             <tr>
               <td>Игроков:</td>
               <td class="text-right" id="total_players">0</td>
               <td class="text-right" id="new_players">0</td>
+              <td></td>
             </tr>
 
             <tr>
               <td>Победителей:</td>
               <td class="text-right" id="total_winners">0</td>
               <td class="text-right" id="new_winners">0</td>
+              <td class="text-muted text-left" id="new_winners_formula"></td>
             </tr>
 
-            <!-- TODO: show 12345789 * 20 --!>
             <tr>
               <td>Получено денег от игроков:</td>
               <td class="text-success text-right" id="total_income">0</td>
               <td class="text-success text-right" id="new_income">0</td>
+              <td class="text-muted text-left" id="new_income_formula"></td>
             </tr>
 
             <!-- TODO: show 12345 * 3 + 34556 * 6 + 12312 * 12 ... --!>
             <tr>
-              <td>Выплачено $:</td>
+              <td>Выплачено, грн.:</td>
               <td class="text-danger text-right" id="total_payed">0</td>
               <td class="text-danger text-right" id="new_payed">0</td>
+              <td class="text-muted text-left" id="new_payed_formula"></td>
             </tr>
 
             <tr>
               <td>Выпущено билетов:</td>
               <td class="text-right" id="total_tickets_issued">0</td>
               <td class="text-right" id="new_tickets_issued">0</td>
+              <td class="text-muted text-left" id="new_tickets_issued_formula"></td>
             </tr>
           </table>
         </div>
