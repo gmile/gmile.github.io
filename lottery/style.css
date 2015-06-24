@@ -6,8 +6,6 @@
   font-family: monospace
 }
 
-#my_stats td + td,
-#my_stats td + td + td
-{
+#my_stats p.calc {
   font-family: monospace
 }

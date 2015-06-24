@@ -130,11 +130,11 @@ var game = {
   },
 
   _generateMorePlayers: function() {
-    return Math.floor((Math.random() * 5000) + 1);
+    return Math.floor(1 + Math.random() * 5000);
   },
 
   _takeSomeOldPlayers: function() {
-    return Math.floor(0.1 * this.total_players);
+    return Math.floor(Math.random() * this.total_players * 0.1);
   }
 };
 
