@@ -4,11 +4,34 @@ numeral.language('ua', {
     decimal: ','
   },
   currency: {
-    symbol: '₴'
+    symbol: 'грн.'
   }
 });
 
 numeral.language('ua');
+
+// var chart = nv.models.lineWithFocusChart();
+//
+// chart.width(1000);
+// chart.margin({ left: 70 });
+//
+// $(function() {
+//   nv.addGraph(function() {
+//     chart.xAxis.tickFormat(d3.format(',f'));
+//     chart.yAxis.tickFormat(d3.format(',.2f'));
+//
+//     d3.select('#chart')
+//       .datum([
+//         game.time_series.day.income,
+//         game.time_series.day.pay,
+//         game.time_series.total.income,
+//         game.time_series.total.pay
+//       ])
+//       .call(chart);
+//
+//     return chart;
+//   });
+// });
 
 var game = {
   table: [
@@ -32,11 +55,37 @@ var game = {
   total_payed:          0,
   total_tickets_issued: 0,
 
+  time_series: {
+    total: {
+      income: {
+        key: 'Total income',
+        values: []
+      },
+      pay: {
+        key: 'Total payed',
+        values: []
+      }
+    },
+    day: {
+      income: {
+        key: 'Income',
+        values: []
+      },
+      pay: {
+        key: 'Payed',
+        values: []
+      }
+    }
+  },
+
   step: function() {
     var day = this._generateNewDay();
 
     this.updateHTML(day);
+
     this._applyNewDay(day);
+    this._pushToTimeSeries(day);
+    this._updatePlot();
   },
 
   reset: function() {
@@ -47,6 +96,13 @@ var game = {
     this.total_income         = 0;
     this.total_payed          = 0;
     this.total_tickets_issued = 0;
+  },
+
+  _pushToTimeSeries: function(day) {
+    this.time_series.day.income.values.push({ x: day.new_day, y: day.new_income });
+    this.time_series.day.pay.values.push({ x: day.new_day, y: day.new_payed });
+    this.time_series.total.income.values.push({ x: day.new_day, y: this.total_income });
+    this.time_series.total.pay.values.push({ x: day.new_day, y: this.total_payed });
   },
 
   _currentStage: function() {
@@ -96,37 +152,40 @@ var game = {
       stage_selector.addClass('success');
     }
 
-    document.getElementById('total_days').innerHTML           = this.total_days;
-    document.getElementById('total_players').innerHTML        = numeral(this.total_players).format('0,0');
-    document.getElementById('total_winners').innerHTML        = numeral(this.total_winners).format('0,0');
-    document.getElementById('total_tickets_issued').innerHTML = numeral(this.total_tickets_issued).format('0,0');
-    document.getElementById('total_income').innerHTML         = numeral(this.total_income).format('0,0$');
-    document.getElementById('total_payed').innerHTML          = numeral(this.total_payed).format('0,0$');
+    document.getElementById('total_players').innerHTML        = numeral(this.total_players).format('0,0') + ' чел.';
+    document.getElementById('total_winners').innerHTML        = numeral(this.total_winners).format('0,0') + ' чел.';
+    document.getElementById('total_tickets_issued').innerHTML = numeral(this.total_tickets_issued).format('0,0') + ' билетов';
+    document.getElementById('total_income').innerHTML         = numeral(this.total_income).format('0,0 $');
+    document.getElementById('total_payed').innerHTML          = numeral(this.total_payed).format('0,0 $');
 
     document.getElementById('new_day').innerHTML            = numeral(new_day.new_day).format('+0,0');
-    document.getElementById('new_players').innerHTML        = numeral(new_day.new_players).format('+0,0');
-    document.getElementById('new_winners').innerHTML        = numeral(new_day.new_winners).format('+0,0');
-    document.getElementById('new_tickets_issued').innerHTML = numeral(new_day.new_tickets_issued).format('+0,0');
-    document.getElementById('new_income').innerHTML         = numeral(new_day.new_income).format('+0,0$');
-    document.getElementById('new_payed').innerHTML          = numeral(new_day.new_payed).format('+0,0$');
+    document.getElementById('new_players').innerHTML        = numeral(new_day.new_players).format('+0,0') + ' чел.';
+    document.getElementById('new_winners').innerHTML        = numeral(new_day.new_winners).format('+0,0') + ' чел.';
+    document.getElementById('new_tickets_issued').innerHTML = numeral(new_day.new_tickets_issued).format('+0,0') + ' билетов';
+    document.getElementById('new_income').innerHTML         = numeral(new_day.new_income).format('+0,0 $');
+    document.getElementById('new_payed').innerHTML          = numeral(new_day.new_payed).format('+0,0 $') + ' чел.';
 
-    var income_formula = '(' + numeral(new_day.new_players).format('0,0')
+    var income_formula = '(' + numeral(new_day.new_players).format('0,0') + ' чел.'
                              + ' + '
-                             + numeral(new_day.old_players).format('0,0')
+                             + numeral(new_day.old_players).format('0,0') + ' чел.'
                              + ') × '
                              + numeral(20).format('0,0$');
 
-    var tickets_issued_folmula = numeral(new_day.new_players).format('0,0')
+    var tickets_issued_folmula = numeral(new_day.new_players).format('0,0') + ' чел.'
                                  + ' + '
-                                 + numeral(new_day.old_players).format('0,0');
+                                 + numeral(new_day.old_players).format('0,0') + ' чел.';
 
-    var payed_formula          = numeral(new_day.new_winners).format('0,0')
+    var payed_formula          = numeral(new_day.new_winners).format('0,0') + ' чел.'
                                  + ' × '
-                                 + numeral(this._currentStage()['win_amount']).format('0,0$');
+                                 + numeral(this._currentStage()['win_amount']).format('0,0 $');
 
     document.getElementById('new_tickets_issued_formula').innerHTML = ' = ' + tickets_issued_folmula;
     document.getElementById('new_income_formula').innerHTML         = ' = ' + income_formula;
     document.getElementById('new_payed_formula').innerHTML          = ' = ' + payed_formula;
+  },
+
+  _updatePlot: function() {
+    // chart.update();
   },
 
   _generateMorePlayers: function() {
@@ -172,6 +231,12 @@ $(function() {
     });
 
     $('#my_table tr.success').removeClass('success');
+  });
+
+  $('#one-year').on('click', function() {
+    for (var i = 0; i < 30; i++) {
+      game.step();
+    }
   });
 
   $('#pause').on('click', function() {
