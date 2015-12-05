@@ -1,4 +1,4 @@
 name: Walking a dog
-markdown: redcarpet
+markdown: kramdown
 permalink: :title
 highlighter: pygments
