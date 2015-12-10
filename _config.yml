@@ -3,4 +3,4 @@ markdown: kramdown
 kramdown:
   input: GFM
 permalink: :title
-highlighter: pygments
+highlighter: rouge

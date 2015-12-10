@@ -9,29 +9,32 @@ I've ran into this problem the other day – after running `cap production deplo
 
 ###  The problem
 
-Here's the steps I did to understand why my deploy stuck on attempt to run migrations.
+To understand why my deploy stuck on attempt to run migrations, I logged into server with production database and ran:
 
-1. logged into server with production database,
-2. ran:
-
-    ```bash
+```bash
 $ psql my_production_database -c "SELECT datname,procpid,current_query FROM pg_stat_activity;"
 
-            datname        | procpid |                        current_query                        
+        datname        | procpid |                        current_query
 -----------------------+---------+-------------------------------------------------------------
 my_production_database |   10312 | <IDLE>
 my_production_database |   12345 | COPY select * from some_really_big_table ... TO STDOUT;
 my_production_database |   54321 | <line_from_one_of_my_rails_migrations>
 my_production_database |   14123 | SELECT datname,procpid,current_query FROM pg_stat_activity;
-    ```
+```
 
-4. there was something curious with `COPY select * from some_really_big_table ... TO STDOUT;` – why is it even being run during migrations? Clearly, this line had nothing to do with my migrations.
+I immediately spotted something curious with:
+
+```sql
+COPY select * from some_really_big_table ... TO STDOUT;`
+```
+
+Why is it even being run during migrations? Clearly, this line had nothing to do with my migrations.
 
 ###  The solution
 
-First off, why `... TO STDOUT;`? In fact, the `... TO STDOUT;` is a good hint itself: at the moment of running the first of my migrations, the database backup was still running, triggered by cron:
+So, why `... TO STDOUT;`? Turns out this: at the moment of running the first of my migrations, the database backup was still running, triggered by cron!
 
-```
+```cron
 0 15 * * * pg_dump my_production_database | gzip /home/my_project/my_production_database_backup.sql.gz
 ```
 
@@ -49,9 +52,9 @@ This would be much more preferable way of resolving the issue, yet not for me. I
 In my case, the backup finished in approx. 5 hours, and it was running for only an hour by the time I was investigating the problem. So here's what I did:
 
 1. kill the backup process (it will make the `cap` command finish with failure, but that's ok):
-      
+
     ```bash
-$ sudo kill -9 12345       
+  $ sudo kill -9 12345
     ```
 
 2. go to the folder, where capistrano keeps all the project releases. For me it was:
