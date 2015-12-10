@@ -1,4 +1,6 @@
 name: Walking a dog
 markdown: kramdown
+kramdown:
+  input: GFM
 permalink: :title
 highlighter: pygments
