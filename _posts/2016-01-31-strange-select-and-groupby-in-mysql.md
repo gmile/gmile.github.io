@@ -43,7 +43,7 @@ This is pretty good restriction, that actually makes a lot of sense. For example
 SELECT Code, MAX(Price) FROM Products;
 ```
 
-Indeed, what if there are multiple products to have the same price, which is a maximum within a give set? Here's how the above example of code will be treated by different versions os MySQL:
+Indeed, what if there are multiple products to have the same price, which is a maximum within a give set? Here's how the above example of code will be treated by different versions of MySQL:
 
 1. Before 5.7.5: it may (and will, given enough tries) return any product for whilch `price = MAX(price)`; **this is ambigious**,
 2. After 5.7.5: it will fail with an error.
