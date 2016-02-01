@@ -11,7 +11,7 @@ published: true
 
 Early into web development I adoped this odd way of thinking about SQL:
 
-> SQL is for some experienced old guys with beards from the 90th. But I come from the world of Ruby on Rails where we have ActiveRecord, that conveniently hides all the SQL complexity. Writing raw SQL is not welcome anymore, and is a sign of a bad programming tone.
+> SQL is for some experienced old guys with beards from the 90th. But I come from the world of Ruby on Rails where we have ActiveRecord, that conveniently hides all the SQL complexity. Writing raw SQL is not welcome anymore, it's _not safe_, and is a sign of a bad programming tone.
 
 Sounds weird? I know, right! But back when I started developing for web 6 years ago, it was a thing I believed in. In almost all of the projects I've been involved in writing raw SQL was considered a bad thing to do. More often than not I'd
 hear a conversation like this:
