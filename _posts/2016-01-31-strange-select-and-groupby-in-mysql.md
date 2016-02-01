@@ -4,7 +4,7 @@ title:  Functionally dependent columns between SELECT and GROUP BY in MySQL
 date:   2016-01-31 20:45
 description: Review of a recent change in MySQL
 categories: development
-published: false
+published: true
 ---
 
 **The problem**
