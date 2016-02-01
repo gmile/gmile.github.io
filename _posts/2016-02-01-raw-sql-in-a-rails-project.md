@@ -17,12 +17,12 @@ Sounds weird? I know, right! But back when I started developing for web 6 years 
 hear a conversation like this:
 
 > – Guys, we should probably write this in raw SQL,
-> – Raw SQL? Seriously?!<br>
-> – Yeah. Why not? It'll be much faster!<br>
+> – Raw SQL? Seriously?!
+> – Yeah. Why not? It'll be much faster!
 > – Who cares about the speed. No-one knows SQL anymore! How are we going to support a piece of code like that? What if there's
-a mistake in the SQL query? Also, how do you test a piece of code like that?<br>
-> – But...<br>
-> – Sorry man, let's write this "the Rails way", building the query via ActiveRecord relations.<br>
+a mistake in the SQL query? Also, how do you test a piece of code like that?
+> – But...
+> – Sorry man, let's write this "the Rails way", building the query via ActiveRecord relations.
 > – Okay.
 
 For a while this was really disapponting. Until one day.
