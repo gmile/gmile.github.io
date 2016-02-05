@@ -111,7 +111,7 @@ describe 'My shiny feed of items' do
 end
 ```
 
-Not only a test like this would execute SQL code and raise if there were a syntax error, but also it'd check a contract between SQL and RoR lands: an expected array of columns returned (which is stored in `ActiveRecord::Result` even if there was no actual data returned) from SQL to be relied upon in Ruby.
+Not only a test like this would execute SQL code and raise if there were a syntax error, but also it'd check a contract between SQL and Ruby realms: an expected array of columns returned (which is stored in `ActiveRecord::Result` even if there was no actual data returned) from SQL to be relied upon in Ruby.
 
 ### How do we make the SQL accept dynamic values?
 
