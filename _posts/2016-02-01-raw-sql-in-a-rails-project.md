@@ -168,4 +168,4 @@ SQL has been around for more than 40 years. It's a giant. Why not build, standin
 
 ---
 
-Big kudos to my friend [Alexei Sholik](https://github.com/alco/) for prof-reading the post!
+Big kudos to my friend [Alexei Sholik](https://github.com/alco/) for proofreading the post!
