@@ -16,24 +16,24 @@ Early into web development I adoped this odd way of thinking about SQL:
 Sounds weird? I know, right! But back in a day, it was a thing I believed in. In almost all of the projects I've been involved in writing raw SQL was considered a bad thing to do. More often than not I'd
 hear a conversation like this:
 
-> – Guys, we should probably write this in raw SQL,
-> – Raw SQL? Seriously?!
-> – Yeah. Why not? It'll be much faster!
-> – Who cares about the speed. No-one knows SQL anymore! How are we going to support a piece of code like that? What if there's
-a mistake in the SQL query? Also, how do you test a piece of code like that?
-> – But...
-> – Sorry man, let's write this "the Rails way", building the query via ActiveRecord relations.
+> – Guys, we should probably write this in raw SQL,<br>
+> – Raw SQL? Seriously?!<br>
+> – Yeah. Why not? It'll be much faster!<br>
+> – Who cares about the speed. No-one knows SQL anymore! How are we going to support a piece of code like that? What if there's<br>
+a mistake in the SQL query? Also, how do you test a piece of code like that?<br>
+> – But...<br>
+> – Sorry man, let's write this "the Rails way", building the query via ActiveRecord relations.<br>
 > – Okay.
 
 For a while this was really disapponting. Until one day.
 
 ## The Hope
 
-On this project we had to generate an XML file. In order to generate the file we'd have to load and iterate over 150k ActiveRecord objects. For each object we'd pull a bunch of its associations, and a bunch of association's associations.
+On this project we had to generate an XML file. In order to generate the file we'd have to load and iterate over 150k ActiveRecord objects. Sounds like not much, but for each object we'd pull a bunch of its associations, and a bunch of association's associations.
 
 Initially the file would take a few minutes to be generated, which was just fine. But as we went on brining more and more associations in, the file generation process surpassed a mark of 20 minutes. This turned out to be critical for a 3rd party consumer system we were feeding the file into: the system was refusing to wait that long, and simply began erroring back at us. To its honour I should admit it was very kind of this 3rd party system to wait 20 minutes in the first place before yelling at us!
 
-Deep in my heart I sensed pure SQL would save us here!
+As I looked at the logs for the process seeing tons and tons of SQL requests, I became curious if it's possible to get all the data in a single SQL query. Deep in my heart I sensed pure SQL would save us here! 
 
 ## The Solution
 
@@ -48,10 +48,10 @@ On the contrary, the "raw SQL" solution looked more appealing:
 
 1. all the Ruby code for pre-loading associations would be gone in favor of a new one-liner to just call a single SQL statement,
 2. we would not initialize hundreds of thousands of Ruby objects. Ruby GC would be happy!
-3. no more useless bytes to send over the wire, as we had ActiveRecord load all columns for all models participating in the process,
+3. no more useless bytes to send over the wire, as right now we had ActiveRecord load all columns for all models participating in the process,
 4. I personally wanted to verify the idea of taking advantage of raw SQL power.
 
-More importantly, to achieve the above all we had to do was to check in a file with SQL code into our git repo, and then call the SQL query from our Ruby code.
+More importantly, to achieve the above all we had to do was to check in a file with SQL code into our git repo, and then call the SQL query from our Ruby code. It just felt simple!
 
 Long story short: after we did the migration, it was taking roughly **1 minute** to actually load all the data we needed! What's more important, it was now possible to start optimizing the SQL query by runnning `EXPLAIN` and auditing indexes. Also, looking at SQL's `SELECT` was a pure joy, as we could quickly see what columns we actually needed for the generated XML file.
 
@@ -167,3 +167,7 @@ Do not be scared of writing raw SQL like I was. After getting myself familiar wi
 I wish someone sat down with me back in a day and told me there aint anything bad about writing pure SQL code. Instead I had to learn this simple truth my own, hard way.
 
 SQL has been around for more than 40 years. It's a giant. Why not build, standing on the shoulders of giant?
+
+---
+
+Big kudos to my friend [Alexei Sholik](https://github.com/alco/) for prof-reading the post!
