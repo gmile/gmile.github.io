@@ -72,7 +72,7 @@ We didn't want to lose track of SQL files in the system, so we've made a decisio
 * inside `lib/` we created a folder called `sql`,
 * each file in the `sql` folder would have to have a `.sql` extension, e.g. `our_precious_feed.sql`, `some_big_report.sql`, etc.
 
-To call the SQL code we've added an object, `RawSQL`. Internally the object would know a hardcoded path to our .sql files, know how to load a file with SQL code, execute it via `ActiveRecord::Base.execute` and return an instance of `ActiveRecord::Result`. You'd use it like this:
+To call the SQL code we've added an object, `RawSQL`. Internally the object would know a hardcoded path to our .sql files, know how to load a file with SQL code, execute it via `ActiveRecord::Base.exec_query` and return an instance of `ActiveRecord::Result`. You'd use it like this:
 
 ```ruby
 result = RawSQL.new('our_precious_feed.sql').result
