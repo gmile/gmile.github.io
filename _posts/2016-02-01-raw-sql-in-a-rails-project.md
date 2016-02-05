@@ -134,7 +134,7 @@ There was one caveat, however: quoting and typecasting. To do that we used the [
 
 With that in mind, he source for the class would look like this:
 
-```
+```ruby
 class RawSQL
   include ActiveRecord::ConnectionAdapters::Quoting
 
