@@ -127,19 +127,35 @@ It's especially expressive when it comes to [generating SQL strings with proper 
 All we had to do was to change the `RawSQL`s method signature to accept params like this:
 
 ```ruby
-RawSQL.new('some_big_report.sql', { some_date: '2014-03-04 13:23:34' }).result
+RawSQL.new('some_big_report.sql').result(some_date: '2014-03-04 13:23:34')
 ```
 
-There was one caveat, however: quoting and typecasting. To do that we used the [`quote`](https://github.com/rails/rails/blob/v4.2.5.1/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L8) method from `ActiveRecord::ConnectionAdapters::Quoting` module:
+There was one caveat, however: quoting and typecasting. To do that we used the [`quote`](https://github.com/rails/rails/blob/v4.2.5.1/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L8) method from `ActiveRecord::ConnectionAdapters::Quoting` module.
 
-```ruby
+With that in mind, he source for the class would look like this:
+
+```
 class RawSQL
-  # ...
-  
   include ActiveRecord::ConnectionAdapters::Quoting
 
-  def quoted_parameters(parameters)
-    parameters.each_with_object({}) do |(key, value), result|
+  def initialize(filename)
+    @filename = filename
+  end
+
+  def result(params)
+    ActiveRecord::Base.connection.exec_query(query % quoted_parameters(params))
+  end
+
+  private
+
+  attr_reader :filename
+
+  def query
+    File.read(Rails.root.join('lib/portal/sql', filename))
+  end
+
+  def quoted_parameters(params)
+    params.each_with_object({}) do |(key, value), result|
       result[key] =
       if value.is_a?(Array)
         value.map { |item| quote(item) }.join(', ')
@@ -168,3 +184,7 @@ SQL has been around for more than 40 years. It's a giant. Why not build, standin
 ---
 
 Big kudos to my friend [Alexei Sholik](https://github.com/alco/) for proofreading the post!
+
+---
+
+**Update**. Added sample source code for `RawSQL` class.
