@@ -18,8 +18,7 @@ Sounds weird? I know, right! But back in a day, it was a thing I believed in. In
 > – Guys, we should probably write this in raw SQL,<br>
 > – Raw SQL? Seriously?!<br>
 > – Yeah. Why not? It'll be much faster!<br>
-> – Who cares about the speed. No-one knows SQL anymore! How are we going to support a piece of code like that? What if there's<br>
-a mistake in the SQL query? Also, how do you test a piece of code like that?<br>
+> – Who cares about the speed. No-one knows SQL anymore! How are we going to support a piece of code like that? What if there's a mistake in the SQL query? Also, how do you test a piece of code like that?<br>
 > – But...<br>
 > – Sorry man, let's write this "the Rails way", building the query via ActiveRecord relations.<br>
 > – Okay.
