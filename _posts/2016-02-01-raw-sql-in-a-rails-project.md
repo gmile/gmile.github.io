@@ -132,7 +132,7 @@ RawSQL.new('some_big_report.sql').result(some_date: '2014-03-04 13:23:34')
 
 There was one caveat, however: quoting and typecasting. To do that we used the [`quote`](https://github.com/rails/rails/blob/v4.2.5.1/activerecord/lib/active_record/connection_adapters/abstract/quoting.rb#L8) method from `ActiveRecord::ConnectionAdapters::Quoting` module.
 
-With that in mind, he source for the class would look like this:
+With that in mind, the source for the class ended up being similar to the following:
 
 ```ruby
 class RawSQL
@@ -151,7 +151,7 @@ class RawSQL
   attr_reader :filename
 
   def query
-    File.read(Rails.root.join('lib/portal/sql', filename))
+    File.read(Rails.root.join('lib/sql', filename))
   end
 
   def quoted_parameters(params)
