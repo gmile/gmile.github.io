@@ -154,17 +154,15 @@ class RawSQL
 end
 ```
 
-## Conclusions
+## Conclusion
 
-These days I find a query code writtin in pure SQL much more appealing that an equivalent multi-line join code written using ActiveRecord relations. Yet to be fair, there are plenty of cases where utilities provided by Arel are absolutely necessary.
+These days I find a query code written in pure SQL much more appealing that an equivalent multi-line join code written using ActiveRecord relations. Yet to be fair, there are plenty of cases where utilities provided by Arel are absolutely necessary.
 
-Take a users search query, for example: it have to encorporate searching by first name, last name, email, id, something else... It can be really intimidating to build this using raw SQL strings. Here's where [arel](https://github.com/rails/arel) comes to the rescue.
-
-Another good example would be iterating over a simple set of associations, like rendering comments for a post. Writing a raw SQL for a job like that would be a waste of time!
+Take a user's search query, for example: it have to incorporate searching by first name, last name, email, id, something else... It can be really intimidating to build this using raw SQL strings. Here's where [arel](https://github.com/rails/arel) comes to the rescue. Another good example would be iterating over a simple set of associations, like rendering comments for a post. Writing a raw SQL for a job like that would be a waste of time!
 
 Do not be scared of writing raw SQL like I was. After getting myself familiar with simple `SELECT`s, `GROUP BY`s and a small set of aggregate functions like `MAX`, `SUM` and alike, I discovered a whole world of new tools, such as window functions, materialized views, jsonb, and lots of other powerful database features.
 
-I wish someone sat down with me back in a day and told me there aint anything bad about writing pure SQL code. Instead I had to learn this simple truth my own, hard way.
+I wish someone sat down with me back in a day and told me there ain't anything bad about writing pure SQL code. Instead I had to learn this simple truth my own, hard way.
 
 SQL has been around for more than 40 years. It's a giant. Why not build, standing on the shoulders of giant?
 
