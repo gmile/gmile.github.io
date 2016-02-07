@@ -1,4 +1,8 @@
-name: Walking a dog
+name: Climbing atop the Shoulders of Giants
+author:
+  name: Eugene Pirogov
+  uri: http://gmile.me
+  email: iamexile@gmail.com
 markdown: kramdown
 kramdown:
   input: GFM
@@ -6,6 +10,7 @@ permalink: :title
 highlighter: rouge
 gems:
   - jekyll-seo-tag
+  - jekyll-feed
 title: Climbing atop the Shoulders of Giants
 description: Website of Eugene Pirogov. Reflections on life, programming and philosophy
 url: http://gmile.me
