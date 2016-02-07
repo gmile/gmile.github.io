@@ -4,3 +4,18 @@ kramdown:
   input: GFM
 permalink: :title
 highlighter: rouge
+gems:
+  - jekyll-seo-tag
+title: Climbing atop the Shoulders of Giants
+description: Website of Eugene Pirogov. Reflections on life, programming and philosophy
+url: http://gmile.me
+twitter:
+  username: gmile
+social:
+  name: Eugene Pirogov
+  links:
+    - https://twitter.com/gmile
+    - https://www.facebook.com/pirogov.evgeniy
+    - https://www.linkedin.com/in/gmile
+    - https://plus.google.com/+EugenePirogov
+    - https://github.com/gmile
