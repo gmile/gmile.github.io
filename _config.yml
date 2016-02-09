@@ -6,7 +6,7 @@ author:
 markdown: kramdown
 kramdown:
   input: GFM
-permalink: :title
+permalink: :title/
 highlighter: rouge
 gems:
   - jekyll-seo-tag
