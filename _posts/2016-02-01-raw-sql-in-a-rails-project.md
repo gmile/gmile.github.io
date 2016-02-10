@@ -121,7 +121,7 @@ Luckly, there's a very convenient mechanism of doing this in Ruby called string 
 "Hello, %{name}" % { name: 'Darkness my old friend' } # => "Hello, Darkness my old friend"
 ```
 
-It's especially expressive when it comes to [generating SQL strings with proper values](http://davebaker.me/articles/tip-ruby-string-interpolation-with-hashes):
+It's especially expressive when it comes to [generating SQL strings with proper values](http://davebaker.me/articles/tip-ruby-string-interpolation-with-hashes).
 
 All we had to do was to change the `RawSQL`s method signature to accept params like this:
 
