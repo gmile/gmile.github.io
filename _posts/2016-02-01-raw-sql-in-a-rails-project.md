@@ -150,7 +150,7 @@ class RawSQL
   attr_reader :filename
 
   def query
-    File.read(Rails.root.join('lib/sql', filename))
+    Rails.root.join('lib', 'sql', filename).read
   end
 
   def quoted_parameters(params)
