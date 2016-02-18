@@ -47,16 +47,16 @@ A few more weeks into professional web development, I am assigned a task to cove
 
 I’ve been doing this days and days, and still couldn’t wrap my head around it. A senior developer helped me out. Every time he comes by me, our dialog looks like this (I’m writing a test for controller):
 
-- Hmm, so I put `stub` here, and it will… what? Appear there?
+- Hmm, so I put `stub` here, and it will… what? When I run the test, it will appear there, _in another file_?
 - Yes.
 - (I put stub)
-- Oh, no, you should put stub before “get”…
+- Oh, no, you should put stub before “get"...
 - Okay. Sorry, can you remind me what am I stubbing again?
 - You’re stubbing this call on that object.
 - Hmm, right. And what will that do?
 - Well, the controller action will execute this code, and since it’s stubbed, it will return whatever you want.
 - And what do I want?
-- You want to return a mock object that “knows” this another method…
+- You want to return a mock object that “knows” this another method...
 - Oh, crap. Okay. And why do I need to stub this another method?
 - Well, you need to make the execution to go on. And if you don’t stub, the execution will stumble, trying to do actual operation on an object.
 
