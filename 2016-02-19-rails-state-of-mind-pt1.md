@@ -27,7 +27,7 @@ I clearly remember there was something irrational about this process of learning
 
 I wondered: wasn’t there some catch here? Shouldn’t I be paying some price for all I’ve got so easily? I didn’t know what to think and just took things for granted.
 
-—
+---
 
 It was February 2010. I was hired as a web developer to work on a Rails project. After two weeks for sitting on a bench and trying to work on some random weird stuff, I was finally assigned a real project. My first task was to finish implementation of authentication system. The was some related authentication code checked in the SVN. Apparently someone before me tried to do this, but ultimately failed. It all boiled down to this: add authlogic gem and make a successful login.
 
@@ -41,7 +41,7 @@ It took me ages until something clicked. While looking at DB schema, I noticed t
 
 After cleaning up this mess and going from the scratch, authlogic gem finally worked. I was so proud of myself, like if I’d accomplish something really, really hard. It felt like magic. But more importantly, I felt like I finally understood _it all_! If only I knew how false that was.
 
-—
+---
 
 A few more weeks into professional web development, I am assigned a task to cover existing code tests. Yuck. But I think  most of us have been there…
 
