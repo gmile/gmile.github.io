@@ -1,4 +1,11 @@
-## The Rails State of Mind, part 1. Three stories
+---
+layout: post
+title:  The Rails State of Mind, part 1. Three stories
+date:   2016-02-19 00:55
+description: My first days with Rails
+categories: development
+published: false
+---
 
 When in 2009 I first started reading 3rd edition of Agile Developer, I was still using Windows. I had some successful experience designing simple web pages in pure HTML/CSS (oh, I loved Macromedia/Adobe Fireworks!), but I had 0 experience in developing web application that implied interaction with user, like saving user’s input in DB, for example. I didn’t know anything about databases, what an application server is and how do I generate a private/public key pair. 
 
