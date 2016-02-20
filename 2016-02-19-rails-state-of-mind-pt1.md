@@ -7,6 +7,8 @@ categories: development
 published: false
 ---
 
+By brining up these memories, I want to explore where, when and how the "seed was planted". I want to understand what resulted in me having the values I have right now. And, ultimately, how did I come to change my attitute towards developing using Ruby on Rails, which I will explore in later posts.
+
 When in 2009 I first started reading 3rd edition of Agile Developer, I was still using Windows. I had some successful experience designing simple web pages in pure HTML/CSS (oh, I loved Macromedia/Adobe Fireworks!), but I had 0 experience in developing web application that implied interaction with user, like saving user’s input in DB, for example. I didn’t know anything about databases, what an application server is and how do I generate a private/public key pair. 
 
 I was going to write a blog in Ruby on Rails. While on a paper, blog didn’t look like a hard task to tackle. You have what, posts, comments and categories? That sounds easy. Besides, I’ve heard that with Rails you can write a blog in 15 minutes. With that I knew I could easily get some help on the internet.
