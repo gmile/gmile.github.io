@@ -11,9 +11,9 @@ When in 2009 I first started reading 3rd edition of Agile Developer, I was still
 
 I was going to write a blog in Ruby on Rails. While on a paper, blog didn’t look like a hard task to tackle. You have what, posts, comments and categories? That sounds easy. Besides, I’ve heard that with Rails you can write a blog in 15 minutes. With that I knew I could easily get some help on the internet.
 
-Running two scaffold commands to generate posts and comments didn’t take much time. As a result of that I felt in loved scaffold! It did so much for me. It was leaving me wondering what’s going on and how all these files generated relate to each other, but I didn’t pay much attention to it. “My Rails app probably needs all these files, so I better use generator whenever I can. Period”.
+Running two scaffold commands to generate posts and comments didn’t take much time. I fell in love with code/boilerplate generators! It did so much for me. It was leaving me wondering what’s going on and how all these files generated relate to each other, but I didn’t pay much attention to it. “My Rails app probably needs all these files, so I better use generator whenever I can. Period”.
 
-After following the guides, and finally I got my blog working. I learned one thing out of that: I need to pay a lot of attention when I read guides. If I do something wrong, I will have to go a few steps back, remove the newly generated files and start all over by running the scaffold once again. Stepping aside from guides meant death.
+After following the guides, I finally got my blog working. I learned one thing out of that: I need to pay a lot of attention when I read guides. If I do something wrong, I will have to go a few steps back, remove the newly generated files and start all over by running the `rails generate` once again. Stepping aside from guides meant death.
 
 I quickly realised I needed tags for my blog posts. But how the hell am I going to do that?. How do I _tell Rails that I needed tags_? To understand the implementation end-to-end, I wanted to implement tags from scratch but I didn’t know where to start. After googling and asking out, someone suggested I should just use this Rails plugin called acts_as_taggable.
 
@@ -23,13 +23,13 @@ I continued to jump to conclusions. What if everything has been _already written
 
 There was a lot of cognitive load already, so I finally settled with using the gem. Maybe this is how real world web development is done these days: you have a framework, you have gems/plugins, you combine them and there you go, you’ve built an app!
 
-I clearly remember there was something irrational about this process of learning. It felt like if I’m a superhero from a movie. I was generating the code via scaffolding, and was throwing in gems whenever I wanted functionality like tags or a tree of categories. It seemed like I was getting all this for free.
+I clearly remember there was something irrational about this process of learning. I felt like I was a superhero from a movie. I would use a code generator to quickly get scaffolding for a new feature/piece of functionality, and would throw in gems whenever I wanted functionality like tags or a tree of categories. It seemed like I was getting all this for free.
 
 I wondered: wasn’t there some catch here? Shouldn’t I be paying some price for all I’ve got so easily? I didn’t know what to think and just took things for granted.
 
 ---
 
-It was February 2010. I was hired as a web developer to work on a Rails project. After two weeks for sitting on a bench and trying to work on some random weird stuff, I was finally assigned a real project. My first task was to finish implementation of authentication system. The was some related authentication code checked in the SVN. Apparently someone before me tried to do this, but ultimately failed. It all boiled down to this: add authlogic gem and make a successful login.
+It was February 2010. I was hired as a web developer to work on a Rails project. After two weeks for sitting on a bench and trying to work on some random weird stuff, I was finally assigned a real project. My first task was to finish implementation of authentication system. Thre was some related authentication code checked in the SVN. Apparently someone before me tried to do this, but ultimately failed. It all boiled down to this: add authlogic gem and make a successful login.
 
 I had to work in Ubuntu, but I didn’t even know what a home folder was, where exactly my files are, and how do I list the contents of directory. Ubuntu terminal scared the shit out of me. To make matters worse: I was running Ubuntu in a Virtual Machine. On a very slow laptop my parents bought me in 2007. It was really shitty day.
 
@@ -39,17 +39,17 @@ A senior co-worker asked me if I was doing OK. I replied I was not. He asked me 
 
 It took me ages until something clicked. While looking at DB schema, I noticed this `crypted_password` field. For some reason, in schema.rb we had a char limit set on it. There was no char limit in any of the guides I’d look at tens of times by now. So I removed it.
 
-After cleaning up this mess and going from the scratch, authlogic gem finally worked. I was so proud of myself, like if I’d accomplish something really, really hard. It felt like magic. But more importantly, I felt like I finally understood _it all_! If only I knew how false that was.
+After cleaning up this mess and rebuilding it from scratch, authlogic gem finally worked. I was so proud of myself, as if I accomplished really, really hard. It felt like magic. But more importantly, I felt like I finally understood _it all_! If only I knew how wrong I was at the time.
 
 ---
 
-A few more weeks into professional web development, I am assigned a task to cover existing code tests. Yuck. But I think  most of us have been there…
+A few more weeks into professional web development, I am assigned a task to cover some existing code with tests. Yuck. But I think  most of us have been there.
 
-I’ve been doing this days and days, and still couldn’t wrap my head around it. A senior developer helped me out. Every time he comes by me, our dialog looks like this (I’m writing a test for controller):
+Every time he was passing by, we would strike a conversation along the following lines (in this instance we were talking about a test for a Rails controller):
 
 - Hmm, so I put `stub` here, and it will… what? When I run the test, it will appear there, _in another file_?
 - Yes.
-- (I put stub)
+(I put stub)
 - Oh, no, you should put stub before “get"...
 - Okay. Sorry, can you remind me what am I stubbing again?
 - You’re stubbing this call on that object.
@@ -62,10 +62,10 @@ I’ve been doing this days and days, and still couldn’t wrap my head around i
 
 Back then my fellow senior developers were far away from good practices, resulting in our controllers being super fat. This led to severe spaghetti code in test. It usually took me hours to finish a single test!
 
-I didn’t felt wrong though. I though this shit ought to be this tough. This is the world grownups developers. Things are complicated. I get payed for doing these things. Probably this is how it should be…
+Suprisingly, it didn’t feel wrong. I seemed fair. I thought it was OK for it to be that tough. I thought that was what the world of grownup developers really looked like, that things were supposed to be complicated there. I got paid for working on those things, so it all was probably the way it should be.
 
 Feature tests were another issue. We didn’t know about database_cleaner gem, and capybara was yet to become industry standard for browser testing. I think we used webrat / selenium in conjunction with cucumber. Every time I needed to run feature tests, I saw a browser window. The tests would fail sporadically. Running tests would feel extremely fragile, to the point that green tests would raise questions rather than a relief. Often it’d take me a day to finish a test.
 
-Overall, that testing experience turned out to be traumatic. I grew to gate tests. TDD seemed ridiculous! No, really: who in their mind would possibly go through this masochism of thinking spaghetti-wise like that, before actually writing any code?! I think even today It’s hard for me to do TDD approach mainly due to that experience.
+Overall, that testing experience turned out to be traumatic. I grew to hate tests. TDD seemed ridiculous! No, really: who in their right mind would possibly go through this masochism of thinking spaghetti-wise like that, before actually writing any code?! I think even today It’s hard for me to do TDD approach mainly due to that experience.
 
-It was only after 2 years that I have restored the faith in tests. But that’s a completely different story.
+It took 2 years before I restored my faith in tests. But that’s a completely different story.
