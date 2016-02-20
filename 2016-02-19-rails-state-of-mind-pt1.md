@@ -71,3 +71,7 @@ Feature tests were another issue. We didn’t know about database_cleaner gem, a
 Overall, that testing experience turned out to be traumatic. I grew to hate tests. TDD seemed ridiculous! No, really: who in their right mind would possibly go through this masochism of thinking spaghetti-wise like that, before actually writing any code?! I think even today It’s hard for me to do TDD approach mainly due to that experience.
 
 It took 2 years before I restored my faith in tests. But that’s a completely different story.
+
+---
+
+Many thanks to my friend [Alexei Sholik](https://github.com/alco/) for proofreading the post!
