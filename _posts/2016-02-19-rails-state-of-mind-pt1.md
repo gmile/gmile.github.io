@@ -21,11 +21,11 @@ Running two scaffold commands to generate posts and comments didn’t take much 
 
 After following the guides, I finally got my blog working. I learned one thing out of that: I need to pay a lot of attention when I read guides. If I do something wrong, I will have to go a few steps back, remove the newly generated files and start all over by running the `rails generate` once again. Stepping aside from guides meant death.
 
-I quickly realised I needed tags for my blog posts. But how the hell am I going to do that?. How do I _tell Rails that I needed tags_? To understand the implementation end-to-end, I wanted to implement tags from scratch but I didn’t know where to start. After googling and asking out, someone suggested I should just use this Rails plugin called acts_as_taggable.
+I quickly realised I needed tags for my blog posts. But how the hell am I going to do that? How do I _tell_ Rails that I needed tags? To understand the implementation end-to-end, I wanted to implement tags from scratch but I didn’t know where to start. After googling and asking out, someone suggested I should just use this Rails plugin called [acts_as_taggable](https://github.com/mbleigh/acts-as-taggable-on).
 
-I clearly remember I thought: “Hmm, shouldn’t I _understand_ how tags are implemented instead of just throwing this plugin in”? But hey, if Rails is a framework that essentially takes care of all the stuff I don’t need to write myself (like helpers and DB interaction, for examples), maybe there’s a _bigger framework_ in a sense that I no longer need to write simple things like tags.
+I clearly remember I thought: “Hmm, shouldn’t I _understand_ how tags are implemented instead of just throwing this plugin in”? But hey, if Rails is a framework that essentially takes care of all the stuff I don’t need to write myself (like `link_to` helper and alike, as well as DB interaction, for examples), maybe there’s a _bigger framework_ in a sense that I no longer need to write simple things like tags.
 
-I continued to jump to conclusions. What if everything has been _already written_, and web development boils down to just combining existing libraries so you barely have to implement anything yourself.
+I continued to jump to conclusions. What if everything has been _already written_, and web development boils down to just combining existing libraries so you barely even have to implement anything yourself.
 
 There was a lot of cognitive load already, so I finally settled with using the gem. Maybe this is how real world web development is done these days: you have a framework, you have gems/plugins, you combine them and there you go, you’ve built an app!
 
