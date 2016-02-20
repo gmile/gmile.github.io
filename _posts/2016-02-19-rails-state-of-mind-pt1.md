@@ -7,7 +7,7 @@ categories: development
 published: true
 ---
 
-By brining up these memories, I want to explore where, when and how the "seed was planted". I want to understand what resulted in me having the values I have right now. And, ultimately, how did I come to change my attitute against developing using Ruby on Rails, which I will explore in later posts.
+By brining up these memories, I want to explore where, when and how the "seed was planted". I want to understand what resulted in me having the values I have right now. And, ultimately, how did I come to change my attitude against developing using Ruby on Rails, which I will explore in later posts.
 
 So, here we go.
 
