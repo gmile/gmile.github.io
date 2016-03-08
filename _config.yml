@@ -1,8 +1,4 @@
 name: Climbing atop the Shoulders of Giants
-author:
-  name: Eugene Pirogov
-  uri: http://gmile.me
-  email: iamexile@gmail.com
 markdown: kramdown
 kramdown:
   input: GFM
