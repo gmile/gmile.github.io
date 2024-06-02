@@ -9,7 +9,7 @@ Over the course of a few years in developement I've worked within a few dev team
 
 ### Feedback from other developers
 
-For a long time in the past, I've been taking the majority of comments regarding my code from my colleagues too personally. It took me a really long time to recognize the main thing in it – [you are not the code you write](http://sstephenson.us/posts/you-are-not-your-code), i.e. the comments I receive are about my code, and not about my personality.
+For a long time in the past, I've been taking the majority of comments regarding my code from my colleagues too personally. It took me a really long time to recognize the main thing in it – [you are not the code you write](https://archive.ph/EwYjR), i.e. the comments I receive are about my code, and not about my personality.
 
 For me, it was crucially important to take a different view on criticizing: **instead of criticizing a person, one must criticise his deeds**. Though, the rule may be alleviated by the following quote:
 
@@ -51,7 +51,7 @@ Even though everyone has confirmed that your proposal to the problem's solution 
 
 The costs, you thought you had successfully avoided would now have to be payed.
 
-I used to think it's someone else's fault, and not mine. Luckily, I had been [wrong](http://sivers.org/my-fault).
+I used to think it's someone else's fault, and not mine. Luckily, I had been [wrong](https://sive.rs/my-fault).
 
 Given we're all playing on a single team, struggling to make a better product, it is our duty to help each other clarify things for us, instead of simply putting the blame on any one person.
 
@@ -67,7 +67,7 @@ After a few unsuccessful attempts to explain the problem I have come up with a l
 
 From my experience, the quickest way to get the clarification work done is to **do 95% of it yourself, leaving your respondent with only 5%**.
 
-As a bonus track, I highly recommend reading on why only [fools write code first](http://blog.reemer.com/why-only-fools-write-code-first).
+As a bonus track, I highly recommend reading on why only [fools write code first](https://archive.ph/YfGl4).
 
 ### Stay on the record
 

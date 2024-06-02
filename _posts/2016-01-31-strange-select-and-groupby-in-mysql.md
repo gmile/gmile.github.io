@@ -57,6 +57,8 @@ Following the rule of thumb above, what we can do is find the most expensive pro
 
 ```sql
 SELECT Manufacturer, MAX(Price) FROM Products GROUP BY Manufacturer;
+```
+```
 +--------------+-------+
 | Manufacturer | Price |
 +--------------+-------+
@@ -81,7 +83,8 @@ SELECT m.Name,
              FROM Products
          GROUP BY Manufacturer) pm ON pm.Manufacturer = m.Code
   JOIN Products p ON pm.Price = p.Price;
-
+```
+```
 +-----------------+------------+-------+
 | Name            | Name       | Price |
 +-----------------+------------+-------+

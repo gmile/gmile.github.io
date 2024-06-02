@@ -7,13 +7,15 @@ categories: development
 ---
 I've ran into this problem the other day – after running `cap production deploy:migrations` the `cap` output had stuck on running the migrations step. Before calling Chip and Dale, I decided to take a closer look at what was going on.
 
-###  The problem
+### The problem
 
 To understand why my deploy stuck on attempt to run migrations, I logged into server with production database and ran:
 
-```bash
-$ psql my_production_database -c "SELECT datname,procpid,current_query FROM pg_stat_activity;"
+```sh
+psql my_production_database -c "SELECT datname,procpid,current_query FROM pg_stat_activity;"
+```
 
+```
         datname        | procpid |                        current_query
 -----------------------+---------+-------------------------------------------------------------
 my_production_database |   10312 | <IDLE>
@@ -30,11 +32,11 @@ COPY select * from some_really_big_table ... TO STDOUT;`
 
 Why is it even being run during migrations? Clearly, this line had nothing to do with my migrations.
 
-###  The solution
+### The solution
 
 So, why `... TO STDOUT;`? Turns out this: at the moment of running the first of my migrations, the database backup was still running, triggered by cron!
 
-```cron
+```
 0 15 * * * pg_dump my_production_database | gzip /home/my_project/my_production_database_backup.sql.gz
 ```
 
@@ -53,44 +55,44 @@ In my case, the backup finished in approx. 5 hours, and it was running for only 
 
 1. kill the backup process (it will make the `cap` command finish with failure, but that's ok):
 
-    ```bash
-  $ sudo kill -9 12345
+    ```sh
+    sudo kill -9 12345
     ```
 
 2. go to the folder, where capistrano keeps all the project releases. For me it was:
 
-    ```bash
-cd /var/projects/my_project/releases/
+    ```sh
+    cd /var/projects/my_project/releases/
     ```
 
 3. refresh the symlink (this is usually done by capistrano itself, yet now we have to do it manually, since cap command finished with a failure):
 
-    ```bash
-ln -s /var/projects/my_project/releases/20130613155542/ current
+    ```sh
+    ln -s /var/projects/my_project/releases/20130613155542/ current
     ```
 
 4. move inside the `current` directory:
 
-    ```bash
-cd /var/projects/my_project/releases/current
+    ```sh
+    cd /var/projects/my_project/releases/current
     ```
 
 5. check the status of migrations, that ran so far (optional):
 
-    ```bash
-RAILS_ENV=production rake db:migrate:status
+    ```sh
+    RAILS_ENV=production rake db:migrate:status
     ```
 
 6. run the migrations:
 
-    ```bash
-RAILS_ENV=production rake db:migrate
+    ```sh
+    RAILS_ENV=production rake db:migrate
     ```
 
 7. restart the application:
 
-    ```bash
-touch tmp/restart
+    ```sh
+    touch tmp/restart
     ```
 
 All done now! Of course, the rule of thumb should be: do not deploy while having DB backup in progress.
