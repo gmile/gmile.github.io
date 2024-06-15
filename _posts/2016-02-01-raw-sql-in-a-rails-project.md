@@ -9,25 +9,25 @@ published: true
 
 ## The Problem
 
-Early into web development I adoped this odd way of thinking about SQL:
+Early into web development, I adopted this odd way of thinking about SQL:
 
-> SQL is for some experienced old guys with beards from the 90th. But I come from the world of Ruby on Rails where we have ActiveRecord, that conveniently hides all the SQL complexity. Writing raw SQL is not welcome anymore, it's _not safe_, and is a sign of a bad programming tone.
+> SQL is for some experienced old guys with beards from the 90th. But I come from the world of Ruby on Rails where we have ActiveRecord, which conveniently hides all the SQL complexity. Writing raw SQL is not welcome anymore, it's _not safe_, and is a sign of a bad programming tone.
 
-Sounds weird? I know, right! But back in a day, it was a thing I believed in. In almost all of the projects I've been involved in writing raw SQL was considered a bad thing to do. More often than not I'd hear a conversation like this:
+Sounds weird? I know, right? But back in a day, it was a thing I believed in. In almost all of the projects I've been involved in writing raw SQL was considered a bad thing to do. More often than not I'd hear a conversation like this:
 
 > – Guys, we should probably write this in raw SQL,<br>
 > – Raw SQL? Seriously?!<br>
 > – Yeah. Why not? It'll be much faster!<br>
-> – Who cares about the speed. No-one knows SQL anymore! How are we going to support a piece of code like that? What if there's a mistake in the SQL query? Also, how do you test a piece of code like that?<br>
+> – Who cares about the speed? No one knows SQL anymore! How are we going to support a piece of code like that? What if there's a mistake in the SQL query? Also, how do you test a piece of code like that?<br>
 > – But...<br>
 > – Sorry man, let's write this "the Rails way", building the query via ActiveRecord relations.<br>
 > – Okay.
 
-For a while this was really disapponting. Until one day.
+For a while, this was really disapponting. Until one day.
 
 ## The Hope
 
-On this project we had to generate an XML file. In order to generate the file we'd have to load and iterate over 150k ActiveRecord objects. Sounds like not much, but for each object we'd pull a bunch of its associations, and a bunch of association's associations.
+On this project, we had to generate an XML file. In order to generate the file we'd have to load and iterate over 150k ActiveRecord objects. Sounds like not much, but for each object we'd pull a bunch of its associations, and a bunch of association's associations.
 
 Initially the file would take a few minutes to be generated, which was just fine. But as we went on brining more and more associations in, the file generation process surpassed a mark of 20 minutes. This turned out to be critical for a 3rd party consumer system we were feeding the file into: the system was refusing to wait that long, and simply began erroring back at us. To its honour I should admit it was very kind of this 3rd party system to wait 20 minutes in the first place before yelling at us!
 
