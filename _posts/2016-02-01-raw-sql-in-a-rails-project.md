@@ -13,7 +13,7 @@ Early into web development, I adopted this odd way of thinking about SQL:
 
 > SQL is for some experienced old guys with beards from the 90th. But I come from the world of Ruby on Rails where we have ActiveRecord, which conveniently hides all the SQL complexity. Writing raw SQL is not welcome anymore, it's _not safe_, and is a sign of a bad programming tone.
 
-Sounds weird? I know, right? But back in a day, it was a thing I believed in. In almost all of the projects I've been involved in writing raw SQL was considered a bad thing to do. More often than not I'd hear a conversation like this:
+Sounds weird I know, right? But back in a day, it was a thing I believed in. In almost all of the projects I've been involved in writing raw SQL was considered a bad thing to do. More often than not I'd hear a conversation like this:
 
 > – Guys, we should probably write this in raw SQL,<br>
 > – Raw SQL? Seriously?!<br>
@@ -23,13 +23,13 @@ Sounds weird? I know, right? But back in a day, it was a thing I believed in. In
 > – Sorry man, let's write this "the Rails way", building the query via ActiveRecord relations.<br>
 > – Okay.
 
-For a while, this was really disapponting. Until one day.
+For a while, this was really disappointing. Until one day.
 
 ## The Hope
 
-On this project, we had to generate an XML file. In order to generate the file we'd have to load and iterate over 150k ActiveRecord objects. Sounds like not much, but for each object we'd pull a bunch of its associations, and a bunch of association's associations.
+On this project, we had to generate an XML file. In order to generate the file we'd have to load and iterate over 150k ActiveRecord objects. Sounds like not much, but for each object, we'd pull a bunch of its associations, and a bunch of association's associations.
 
-Initially the file would take a few minutes to be generated, which was just fine. But as we went on brining more and more associations in, the file generation process surpassed a mark of 20 minutes. This turned out to be critical for a 3rd party consumer system we were feeding the file into: the system was refusing to wait that long, and simply began erroring back at us. To its honour I should admit it was very kind of this 3rd party system to wait 20 minutes in the first place before yelling at us!
+Initially, the file would take a few minutes to be generated, which was just fine. But as we went on brining more and more associations in, the file generation process surpassed a mark of 20 minutes. This turned out to be critical for a 3rd party consumer system we were feeding the file into: the system was refusing to wait that long, and simply began erroring back at us. To its honour, I should admit it was very kind of this 3rd party system to wait 20 minutes in the first place before yelling at us!
 
 As I looked at the logs for the process seeing tons and tons of SQL requests, I became curious if it's possible to get all the data in a single SQL query. Deep in my heart I sensed pure SQL would save us here! 
 
@@ -40,18 +40,18 @@ It was quickly identified that we had two options to go with:
 1. start caching the file, so that we have a pre-made file before the 3rd party comes to take it,
 2. try a radical "rewrite all the things" solution using pure SQL, and see what happens.
 
-The caching solution would require us to throw in some caching code as well as some code/rules to invalidate the cache. Also it was clear that we would no longer be providing a "live feed", which didn't feel right.
+The caching solution would require us to throw in some caching code as well as some code/rules to invalidate the cache. Also, it was clear that we would no longer be providing a "live feed", which didn't feel right.
 
 On the contrary, the "raw SQL" solution looked more appealing:
 
-1. all the Ruby code for pre-loading associations would be gone in favor of a new one-liner to just call a single SQL statement,
+1. all the Ruby code for pre-loading associations would be gone in favour of a new one-liner to just call a single SQL statement,
 2. we would not initialize hundreds of thousands of Ruby objects. Ruby GC would be happy!
-3. no more useless bytes to send over the wire, as right now we had ActiveRecord load all columns for all models participating in the process,
+3. no more useless bytes to send over the wire, as right now we have ActiveRecord load all columns for all models participating in the process,
 4. I personally wanted to verify the idea of taking advantage of raw SQL power.
 
 More importantly, to achieve the above all we had to do was to check in a file with SQL code into our git repo, and then call the SQL query from our Ruby code. It just felt simple!
 
-Long story short: after we did the migration, it was taking roughly **1 minute** to actually load all the data we needed! What's more important, it was now possible to start optimizing the SQL query by runnning `EXPLAIN` and auditing indexes. Also, looking at SQL's `SELECT` was a pure joy, as we could quickly see what columns we actually needed for the generated XML file.
+Long story short: after we did the migration, it took roughly **1 minute** to actually load all the data we needed! What's more important, it was now possible to start optimizing the SQL query by running `EXPLAIN` and auditing indexes. Also, looking at SQL's `SELECT` was a pure joy, as we could quickly see what columns we actually needed for the generated XML file.
 
 ## Howto-s
 
@@ -82,13 +82,13 @@ result = RawSQL.new('our_precious_feed.sql').result
 
 ### Is there an SQL style we should adhere to?
 
-Early on we've adoped a simple [style guide](https://github.com/meadmaker/sql-style-guide). It hasn't been updated for quite a while, but it was a good start. We're still using it.
+Early on we've adopted a simple [style guide](https://github.com/meadmaker/sql-style-guide). It hasn't been updated for quite a while, but it was a good start. We're still using it.
 
 ### How do we test an SQL file? Do we even have to?
 
 This is a tricky one. No, there's no need. SQL is essentially a way to describe the data you want. However, we ended up with the following rules:
 
-1. write a full-blown integration test based on DB data only when you absolutetly need to (this really sucks, but sometimes you better be safe than sorry),
+1. write a full-blown integration test based on DB data only when you absolutely need to (this really sucks, but sometimes you better be safe than sorry),
 2. write a sanity-check test that verifies SQL syntax to not blow up when when executed.
 
 An RSpec test `spec/lib/sql/our_precious_feed_sql.rb` for the latter case would look like this:
@@ -113,9 +113,9 @@ Not only a test like this would execute SQL code and raise if there were a synta
 
 ### How do we make the SQL accept dynamic values?
 
-Our initial SQL query was just "take all the data" style of query. But what if we need to specify an ID, string or an array for the SQL query to depend upon in, say, a `WHERE` clause?
+Our initial SQL query was just a "take all the data" style of query. But what if we need to specify an ID, string or array for the SQL query to depend upon in, say, a `WHERE` clause?
 
-Luckly, there's a very convenient mechanism of doing this in Ruby called string interpolation:
+Luckily, there's a very convenient mechanism of doing this in Ruby called string interpolation:
 
 ```ruby
 "Hello, %{name}" % { name: 'Darkness my old friend' } # => "Hello, Darkness my old friend"
@@ -174,7 +174,7 @@ These days I find a query code written in pure SQL much more appealing than an e
 
 Take a user's search query, for example: it has to incorporate searching by first name, last name, email, id, something else... It can be really intimidating to build this using raw SQL strings. This is where [arel](https://github.com/rails/arel) comes to the rescue. Another good example would be iterating over a simple set of associations, like rendering comments for a post. Writing a raw SQL for a job like that would be a waste of time!
 
-Do not be scared of writing raw SQL like I was. After becoming familiar with simple `SELECT`s, `GROUP BY`s and a small set of aggregate functions like `MAX`, `SUM` and the like, I discovered a whole world of new tools, such as window functions, materialized views, jsonb, and lots of other powerful database features.
+Do not be scared of writing raw SQL like I was. After becoming familiar with simple `SELECT`s, `GROUP BY`s and a small set of aggregate functions like `MAX`, `SUM` and the like, I discovered a whole world of new tools, such as window functions, materialized views, JSONs, and lots of other powerful database features.
 
 I wish someone sat down with me back in the day and told me there ain't anything bad about writing pure SQL code. Instead I had to learn this simple truth my own, hard way.
 
